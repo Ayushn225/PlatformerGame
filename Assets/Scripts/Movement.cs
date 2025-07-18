@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour
             wallLayer
         );
 
+
         if(isWallTouch)
         {
             flip();
@@ -50,6 +51,7 @@ public class Movement : MonoBehaviour
     private void flip(){
         transform.Rotate(0, 180, 0);
         updateInverseVector();
+        rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
     }
 
     private void updateInverseVector(){
@@ -71,10 +73,9 @@ public class Movement : MonoBehaviour
         if(buttonPressed && speedMultiplier < 1){
             speedMultiplier += Time.deltaTime* acceleration;
         }else if(!buttonPressed && speedMultiplier > 0){
-            speedMultiplier -= Time.deltaTime* acceleration;
-            if(speedMultiplier < 0){
-                speedMultiplier = 0;
-            }
+            speedMultiplier -= Time.deltaTime * acceleration;
         }
+        speedMultiplier = Mathf.Clamp(speedMultiplier, 0, 1);
+        Debug.Log("Speed Multiplier: " + speedMultiplier);
     }
 }
