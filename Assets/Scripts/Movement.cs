@@ -76,6 +76,5 @@ public class Movement : MonoBehaviour
             speedMultiplier -= Time.deltaTime * acceleration;
         }
         speedMultiplier = Mathf.Clamp(speedMultiplier, 0, 1);
-        Debug.Log("Speed Multiplier: " + speedMultiplier);
     }
 }
