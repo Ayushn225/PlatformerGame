@@ -57,6 +57,12 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void ResetMovement()
+    {
+        speedMultiplier = 0;
+        buttonPressed = false;
+    }
+
     private void flip(){
         transform.Rotate(0, 180, 0);
         updateInverseVector();
